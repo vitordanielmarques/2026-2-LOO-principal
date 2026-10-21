@@ -15,18 +15,18 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ColaboradorDAO dao = new ColaboradorDAO();
+        ColaboradorDAO daoColab = new ColaboradorDAO();
 
-        ArrayList<Colaborador> colab = dao.readAll();
+        ArrayList<Colaborador> colab = daoColab.readAll();
         for (Colaborador itemColab : colab) {
             itemColab.exibir();
         }
 
         Colaborador colab01 = new Colaborador(0, "Lula", "95101", "Presidente");
-        dao.create(colab01);
+        daoColab.create(colab01);
         //colab01.exibir(); exibe só o objeto criado.
 
-        colab = dao.readAll();
+        colab = daoColab.readAll();
         for (Colaborador itemColab : colab) {
             itemColab.exibir();
         }
@@ -53,6 +53,12 @@ public class App {
             itemProfessor.exibir();
         }
 
+        Professor professor01 = new Professor(0, "Glauce", "3233256", 6000.0);
+        daoProfessor.create(professor01);
 
+        professores = daoProfessor.readAll();
+        for (Professor itemProfessor : professores) {
+            itemProfessor.exibir();
+        }
     }
 }
