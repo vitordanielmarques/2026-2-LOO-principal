@@ -6,11 +6,9 @@ import Dominio.AbsPessoa;
 import Dominio.Aluno;
 import Dominio.Colaborador;
 import Dominio.Professor;
-//import Dominio.ProfessorEfetivo;
-//import FakeDB.*;
+import Dominio.ProfessorEfetivo;
 import DAO.ColaboradorDAO;
-import Dominio.*;
-import DAO.*;
+import DAO.AlunoDAO;
 import java.util.ArrayList;
 
 public class App {
@@ -29,6 +27,21 @@ public class App {
         colab = dao.readAll();
         for (Colaborador item : colab) {
             item.exibir();
+        }
+
+        AlunoDAO daoAluno = new AlunoDAO();
+
+        ArrayList<Aluno> alunos = daoAluno.readAll();
+        for (Aluno aluno : alunos) {
+            aluno.exibir();
+        }
+
+        Aluno aluno01 = new Aluno(0, "Filipe", "95102", "20261116");
+        daoAluno.create(aluno01);
+
+        alunos = daoAluno.readAll();
+        for (Aluno aluno : alunos) {
+            aluno.exibir();
         }
     }
 }
