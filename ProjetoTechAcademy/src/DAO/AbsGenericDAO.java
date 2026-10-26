@@ -7,7 +7,7 @@ public abstract class AbsGenericDAO<T> {
     protected ArrayList<T> repositorio;
 
     public abstract T create(T novo);
-    public  ArrayList<T> readAll(){
+    public ArrayList<T> readAll(){
         return this.repositorio;
     }
     public abstract T readOne(int codigo);

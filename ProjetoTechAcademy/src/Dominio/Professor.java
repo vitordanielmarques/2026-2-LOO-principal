@@ -17,11 +17,11 @@ public class Professor extends AbsPessoa {
 
     @Override
     public void exibir() {
-        System.out.println("[PROFESSOR] Código: " + this.codigo);
-        System.out.println("[PROFESSOR] Nome: " + this.nome);
-        System.out.println("[PROFESSOR] CPF: " + this.cpf);
-        System.out.println("[PROFESSOR] Salário: " + this.salario);
-        System.out.println("[PROFESSOR] Bonificação: " + this.calcularBonificacao());
+        System.out.println("Código: " + this.codigo);
+        System.out.println("Nome: " + this.nome);
+        System.out.println("CPF: " + this.cpf);
+        System.out.println("Salário: " + this.salario);
+        System.out.println("Bonificação: " + this.calcularBonificacao());
     }
 
     public Professor(){}

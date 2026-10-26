@@ -3,7 +3,7 @@ package FakeDB;
 import java.util.ArrayList;
 
 import Dominio.AbsPessoa;
-//usa generic.
+
 public abstract class AbsFakeDB {
     protected ArrayList<AbsPessoa> dados;
 

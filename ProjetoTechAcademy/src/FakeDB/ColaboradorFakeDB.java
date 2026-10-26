@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import Dominio.Colaborador;
 
-public class ColaboradorFakeDB extends AbsGenericFakeDB<Colaborador> {
-    
+public class ColaboradorFakeDB extends AbsGenericFakeDB<Colaborador>{
+
     @Override 
     protected void autoPreencher(){
         this.dados.add(new Colaborador(101, "Mateus Pereira", "1231", "Estagiário"));

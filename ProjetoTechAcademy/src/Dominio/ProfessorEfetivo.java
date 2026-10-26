@@ -18,12 +18,12 @@ public class ProfessorEfetivo extends Professor{
 
     @Override
     public void exibir() {
-        System.out.println("[PROFESSOR EFETIVO] Código: " + this.codigo);
-        System.out.println("[PROFESSOR EFETIVO] Nome: " + this.nome);
-        System.out.println("[PROFESSOR EFETIVO] CPF: " + this.cpf);
-        System.out.println("[PROFESSOR EFETIVO] Salário: " + this.getSalario());
-        System.out.println("[PROFESSOR EFETIVO] Triênio: " + this.trienio);
-        System.out.println("[PROFESSOR EFETIVO] Bonificação: " + this.calcularBonificacao());
+        System.out.println("Código: " + this.codigo);
+        System.out.println("Nome: " + this.nome);
+        System.out.println("CPF: " + this.cpf);
+        System.out.println("Salário: " + this.getSalario());
+        System.out.println("Triênio: " + this.trienio);
+        System.out.println("Bonificação: " + this.calcularBonificacao());
     }
 
     public ProfessorEfetivo(){}

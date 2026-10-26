@@ -13,10 +13,10 @@ public class Colaborador extends AbsPessoa {
 
     @Override
     public void exibir(){
-        System.out.println("[Colaborador]Código: " + this.codigo);
-        System.out.println("[Colaborador]Nome: " + this.nome);
-        System.out.println("[Colaborador]CPF: " + this.cpf);
-        System.out.println("[Colaborador]Cargo: " + this.cargo);
+        System.out.println("[Colaborador] Código: " + this.codigo);
+        System.out.print("Nome: " + this.nome);
+        System.out.print(" | CPF: " + this.cpf);
+        System.out.println("| Cargo: " + this.cargo);
     }
 
     public Colaborador(){}

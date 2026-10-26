@@ -1,64 +1,100 @@
-import FakeDB.AlunoFakeDB;
-import FakeDB.ColaboradorFakeDB;
-import FakeDB.ProfessorEfetivoFakeDB;
-import FakeDB.ProfessorFakeDB;
-import Dominio.AbsPessoa;
-import Dominio.Aluno;
-import Dominio.Colaborador;
-import Dominio.Professor;
-import Dominio.ProfessorEfetivo;
-import DAO.ColaboradorDAO;
-import DAO.AlunoDAO;
-import DAO.ProfessorDAO;
-import DAO.ProfessorEfetivoDAO;
-import java.util.ArrayList;
+import Dominio.*;
+import Servico.ColaboradorServ;
+import DAO.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ColaboradorDAO daoColab = new ColaboradorDAO();
+        testarSRV();
+    }
 
-        ArrayList<Colaborador> colab = daoColab.readAll();
-        for (Colaborador itemColab : colab) {
-            itemColab.exibir();
+    private static void testarSRV(){
+        System.out.println("***** TESTANDO SERVIÇO *****");
+        ColaboradorServ srv = new ColaboradorServ();
+
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ORIGINAL *****");
+        for(Colaborador item : srv.listar()){
+            item.exibir();
         }
 
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ADICIONANDO *****");
         Colaborador colab01 = new Colaborador(0, "Lula", "95101", "Presidente");
-        daoColab.create(colab01);
-        //colab01.exibir(); exibe só o objeto criado.
+        srv.adicionar(colab01);
+        colab01.exibir();        
 
-        colab = daoColab.readAll();
-        for (Colaborador itemColab : colab) {
-            itemColab.exibir();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS ADIÇÃO DE REGISTRO *****");
+        for(Colaborador item : srv.listar()){
+            item.exibir();
         }
 
-        AlunoDAO daoAluno = new AlunoDAO();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ALTERANDO *****");
+        colab01.setNome("Renan");
+        Colaborador colab02 = srv.editar(colab01);
+        colab02.exibir();
 
-        ArrayList<Aluno> alunos = daoAluno.readAll();
-        for (Aluno itemAluno : alunos) {
-            itemAluno.exibir();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS ALTERAÇÃO DE REGISTRO *****");
+        for(Colaborador item : srv.listar()){
+            item.exibir();
         }
 
-        Aluno aluno01 = new Aluno(0, "Filipe", "95102", "20261116");
-        daoAluno.create(aluno01);
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APAGANDO *****");
+        srv.excluir(colab02);
+        colab02.exibir();
 
-        alunos = daoAluno.readAll();
-        for (Aluno itemAluno : alunos) {
-            itemAluno.exibir();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS APAGAR O REGISTRO *****");
+        for(Colaborador item : srv.listar()){
+            item.exibir();
+        }        
+    }
+
+    private static void testarDAO(){
+        ColaboradorDAO dao = new ColaboradorDAO();
+
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ORIGINAL *****");
+        for(Colaborador item : dao.readAll()){
+            item.exibir();
         }
 
-        ProfessorDAO daoProfessor = new ProfessorDAO();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ADICIONANDO *****");
+        Colaborador colab01 = new Colaborador(0, "Lula", "95101", "Presidente");
+        dao.create(colab01);
+        colab01.exibir();
 
-        ArrayList<Professor> professores = daoProfessor.readAll();
-        for (Professor itemProfessor : professores) {
-            itemProfessor.exibir();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS ADIÇÃO DE REGISTRO *****");
+        for(Colaborador item : dao.readAll()){
+            item.exibir();
         }
 
-        Professor professor01 = new Professor(0, "Glauce", "3233256", 6000.0);
-        daoProfessor.create(professor01);
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** ALTERANDO *****");
+        colab01.setNome("Renan");
+        Colaborador colab02 = dao.update(colab01);
+        colab02.exibir();
 
-        professores = daoProfessor.readAll();
-        for (Professor itemProfessor : professores) {
-            itemProfessor.exibir();
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS ALTERAÇÃO DE REGISTRO *****");
+        for(Colaborador item : dao.readAll()){
+            item.exibir();
+        }
+
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APAGANDO *****");
+        dao.delete(colab02);
+        colab02.exibir();
+
+        System.out.println("\n\n\n\n\n");
+        System.out.println("***** APÓS APAGAR O REGISTRO *****");
+        for(Colaborador item : dao.readAll()){
+            item.exibir();
         }
     }
 }
