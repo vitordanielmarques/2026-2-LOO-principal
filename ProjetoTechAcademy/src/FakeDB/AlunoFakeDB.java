@@ -2,9 +2,9 @@ package FakeDB;
 
 import java.util.ArrayList;
 
-import Dominio.*;
+import Dominio.Aluno;
 
-public class AlunoFakeDB extends AbsFakeDB{
+public class AlunoFakeDB extends AbsGenericFakeDB<Aluno> {
 
     @Override
     protected void autoPreencher() {
