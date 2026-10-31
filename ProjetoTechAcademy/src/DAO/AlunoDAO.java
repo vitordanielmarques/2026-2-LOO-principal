@@ -4,7 +4,7 @@ import Dominio.Aluno;
 import FakeDB.AlunoFakeDB;
 
 public class AlunoDAO extends AbsGenericDAO<Aluno> {
-
+    //para criar um novo registro, precisamos pegar o último código do repositório e somar 1.
     @Override
     public Aluno create(Aluno novo) {
         int ultimoCodigo = this.repositorio.getLast().getCodigo();
@@ -13,7 +13,7 @@ public class AlunoDAO extends AbsGenericDAO<Aluno> {
         this.repositorio.add(novo); //adiciona o novo aluno no repositório
         return novo; //devolve o novo registro com o código atualizado
     }
-
+    //
     @Override
     public Aluno delete(Aluno apagado) {
         // TODO Auto-generated method stub
